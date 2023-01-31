@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="canonical" href="https://sam-tic-toe.netlify.app/" />
+    <meta name="theme-color" content="#4285f4" />
+
+    <title>Tic-Toe</title>
+    <!-- pwa -->
+    <link rel="manifest" href="manifest.json" />
+
+    <link rel="stylesheet" href="style.css" />
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-TCF69B4");
+    </script>
+
+    <!-- End Google Tag Manager -->
+  </head>
+  <body>
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-TCF69B4"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe>
+    </noscript>
+
+    <h1><span>Tic Toe - @Sam</span></h1>
+
+    <div class="container">
+      <table>
+        <tr>
+          <td class="cell" id="0"></td>
+          <td class="cell" id="1"></td>
+          <td class="cell" id="2"></td>
+        </tr>
+        <tr>
+          <td class="cell" id="3"></td>
+          <td class="cell" id="4"></td>
+          <td class="cell" id="5"></td>
+        </tr>
+        <tr>
+          <td class="cell" id="6"></td>
+          <td class="cell" id="7"></td>
+          <td class="cell" id="8"></td>
+        </tr>
+      </table>
+      <div class="endgame">
+        <div class="text"></div>
+      </div>
+      <div class="YourIdentity"></div>
+      <div class="scores"></div>
+      <div class="selectSym">
+        <p>Select symbol</p>
+        <button onclick="selectSym('X')">X</button>
+        <button onclick="selectSym('O')">O</button>
+      </div>
+      <button onclick="startGame()" class="btn">Reply</button>
+    </div>
+
+    <ul id="notes"></ul>
+
+    <script src="./script.js"></script>
+    <!-- PWA -->
+    <script>
+      window.addEventListener("load", () => {
+        registerSW();
+      });
+      // Register the Service Worker
+      async function registerSW() {
+        if ("serviceWorker" in navigator) {
+          try {
+            await navigator.serviceWorker.register("serviceworker.js");
+          } catch (e) {
+            console.log("SW registration failed");
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
